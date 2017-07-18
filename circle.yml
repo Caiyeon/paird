@@ -9,6 +9,5 @@ dependencies:
 
 test:
   override:
-    - cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
-    - env GOOS=linux GOARCH=amd64 go build -o lunch-with-us -v github.com/caiyeon/lunch-with-us
-    - mv lunch-with-us $CIRCLE_ARTIFACTS
+    - cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us && go build -o lunch-with-us -v github.com/caiyeon/lunch-with-us
+    - mv /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us/lunch-with-us $CIRCLE_ARTIFACTS
