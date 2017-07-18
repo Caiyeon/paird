@@ -4,6 +4,7 @@ import (
 	"errors"
 	"strings"
 	"net/http"
+	"net/url"
 	"log"
 	"fmt"
 	"io/ioutil"
@@ -22,7 +23,7 @@ type encryptData struct {
 func Encrypt(text string) (string, error) {
 	// make call to vault-ui.io
 	client := &http.Client{}
-	payload := strings.NewReader("key=lwu&plaintext="+ text)
+	payload := strings.NewReader("key=lwu&plaintext="+ url.QueryEscape(text))
 	req, err := http.NewRequest("POST", "https://vault-ui.io/api/transit/encrypt", payload)
     if err != nil {
         log.Print(err)
@@ -50,17 +51,24 @@ func Decrypt(cipher string) (string, error) {
 	}
 	// make call to vault-ui.io
 	client := &http.Client{}
-	payload := strings.NewReader("key=lwu&cipher="+ cipher)
+	payload := strings.NewReader("key=lwu&cipher="+ url.QueryEscape(cipher))
 	req, err := http.NewRequest("POST", "https://vault-ui.io/api/transit/decrypt", payload)
     if err != nil {
         log.Print(err)
+        return "", err
     }
     req.Header.Add("X-Vault-Token", VaultToken)
     req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
     resp, err := client.Do(req)
+    if err != nil{
+    	return "", err
+    }
     defer resp.Body.Close()
-    fmt.Println("Status is ",resp.Status)
-    respString, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println("vault Status is ",resp.Status)
+    respString, err := ioutil.ReadAll(resp.Body)
+    if err != nil{
+    	return "", err
+    }
     fmt.Println("Decrypted result: ", string(respString))
 
     //extract response string
