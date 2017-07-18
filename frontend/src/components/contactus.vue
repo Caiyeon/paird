@@ -4,10 +4,24 @@
     <div class="ContactUs">
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 form-class">
+
         <div class="heading-title">
-        <h1>Contact Us</h1>
+          <h1>Contact Us</h1>
         </div>
+
+          <b-form-fieldset label="Enter your name">
+            <b-form-input v-model="name" :state="state"></b-form-input>
+          </b-form-fieldset>
+
+          <b-form-fieldset label="Enter your email">
+            <b-form-input v-model="name" :state="state"></b-form-input>
+          </b-form-fieldset>  
+
+          <b-form-fieldset label="Enter your message">
+            <b-form-input v-model="name" :state="state" id="message-box"></b-form-input>
+          </b-form-fieldset>  
+          
       </div>
     </div>
 
@@ -24,6 +38,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#message-box {
+  height: 200px
+}
+.form-class {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+  color: white;
+  margin-left: 50px;
+  padding: 50px 90px;
+  
+}
 .heading-title {
   text-align: center;
   margin-top: 50px
