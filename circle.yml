@@ -5,11 +5,11 @@ dependencies:
     # make parent folder (since it shouldn't exist now)
     - mkdir -p /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
     # copy cloned folder into $GOPATH so vendor folder will work
-    - cd .. && mv -f lunch-with-us /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+    - cd .. && mv -f lunch-with-us /home/ubuntu/.go_workspace/src/github.com/caiyeon
 
 test:
   override:
     - ? |
         cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
-        go build -o lunch-with-us -v github.com/caiyeon/lunch-with-us
+        go build -a -o lunch-with-us -v github.com/caiyeon/lunch-with-us
         mv lunch-with-us $CIRCLE_ARTIFACTS
