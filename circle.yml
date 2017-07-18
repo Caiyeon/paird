@@ -5,7 +5,7 @@ dependencies:
     # make parent folder (since it shouldn't exist now)
     - mkdir -p /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
     # copy cloned folder into $GOPATH so vendor folder will work
-    - cd .. && mv -f lunch-with-us /home/ubuntu/.go_workspace/src/github.com/lunch-with-us
+    - cd .. && mv -f lunch-with-us /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
 
 test:
   override:
