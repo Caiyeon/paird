@@ -3,8 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	"github.com/caiyeon/lunch-with-us/handlers"
+	"github.com/caiyeon/lunch-with-us/vault"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"golang.org/x/crypto/acme/autocert"
@@ -18,6 +20,11 @@ func main() {
 	// command line args
 	flag.BoolVar(&prod, "prod", false, "Set to true in production to use let's encrypt")
 	flag.Parse()
+
+	// setup vault token
+	if vault.VaultToken = os.Getenv("VAULT_TOKEN"); vault.VaultToken == "" {
+		panic("VAULT_TOKEN env var is not set!")
+	}
 
 	// initialize echo webserver
 	e := echo.New()

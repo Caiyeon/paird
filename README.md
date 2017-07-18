@@ -1,5 +1,7 @@
 ### Starting the application
-`go run server.go`
+Make sure your vault token is set as env var: `export VAULT_TOKEN={secret_token}`
+
+Then: `go run server.go`
 
 And then test the server by pinging it:
 `curl http://127.0.0.1:8000/v1/ping`
