@@ -61,6 +61,9 @@ func main() {
 		}))
 	}
 
+	// serve static folder
+	e.Static("/", "lunch-with-us/docs")
+
 	// api routing
 	e.GET("/v1/ping", handlers.Ping())
 	e.POST("/v1/signup", handlers.Signup())
