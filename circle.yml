@@ -11,5 +11,6 @@ test:
   override:
     - ? |
         cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+        go test -race $(go list ./... | grep -v /vendor/)
         go build -a -o lunch-with-us -v github.com/caiyeon/lunch-with-us
         mv lunch-with-us $CIRCLE_ARTIFACTS
