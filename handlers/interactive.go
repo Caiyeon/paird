@@ -79,7 +79,7 @@ func Interactive() echo.HandlerFunc {
 			"text": "Step 2:",
 			"attachments": []interface{}{
 				map[string]interface{}{
-					"text":            "Are you looking for a:",
+					"text":            text,
 					"fallback":        "Unsupported slack client",
 					"callback_id":     "signup_seek",
 					"color":           "#3AA3E3",
