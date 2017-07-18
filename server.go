@@ -15,7 +15,7 @@ var (
 
 func main() {
 	// command line args
-	flag.BoolVar(&prod, "prod", true, "Set to true in production to use let's encrypt")
+	flag.BoolVar(&prod, "prod", false, "Set to true in production to use let's encrypt")
 	flag.Parse()
 
 	// initialize echo webserver
