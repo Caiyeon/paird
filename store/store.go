@@ -6,14 +6,14 @@ import (
 	"github.com/boltdb/bolt"
 )
 
-var DB *bolt.DB
+var db *bolt.DB
 
 func Initialize(filename string) (err error) {
 	// use local file as db store
-	DB, err = bolt.Open(filename, 0600, nil)
+	db, err = bolt.Open(filename, 0600, nil)
 
 	// start a transaction
-	tx, err := DB.Begin(true)
+	tx, err := db.Begin(true)
 	if err != nil {
 		return err
 	}
@@ -33,5 +33,5 @@ func Initialize(filename string) (err error) {
 }
 
 func CloseDB() {
-	DB.Close()
+	db.Close()
 }
