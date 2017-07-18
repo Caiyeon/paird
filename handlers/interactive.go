@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/caiyeon/lunch-with-us/store"
 	"github.com/labstack/echo"
 )
 
@@ -67,10 +68,11 @@ func Interactive() echo.HandlerFunc {
 				text = "Ok, you are signing up as a " + payload.Actions[0].Value
 			} else {
 				text = "Ok, you don't mind being either"
+				payload.Actions[0].Value = "both"
 			}
 			text = text + "\nAre you looking for a:"
 
-			// insert user's self tag
+			store.SetUserKeyValue(payload.User.Name, payload.Team.Domain, "self-type", payload.Actions[0].Value)
 
 			return c.JSON(http.StatusOK, H{
 				"text": "Step 2:",
@@ -110,7 +112,11 @@ func Interactive() echo.HandlerFunc {
 				text = "Ok, you are seeking a " + payload.Actions[0].Value
 			} else {
 				text = "Ok, you don't mind meeting up with a mentor or mentee"
+				payload.Actions[0].Value = "both"
 			}
+
+			store.SetUserKeyValue(payload.User.Name, payload.Team.Domain, "search-type", payload.Actions[0].Value)
+
 			return c.JSON(http.StatusOK, H{
 				"text":        text + "\nDone! You will be notified when a pairing is made!\nTo enhance your experience:",
 				"attachments": helpMessage,
