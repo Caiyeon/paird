@@ -40,7 +40,8 @@ func main() {
 	// middleware
 	e.Use(middleware.BodyDump(
 		func(c echo.Context, reqBody, resBody []byte) {
-			fmt.Printf("%s\n", reqBody)
+			fmt.Printf("Request body:\n%s\n\n", reqBody)
+			fmt.Printf("Response body:\n%s\n\n", resBody)
 		}),
 	)
 

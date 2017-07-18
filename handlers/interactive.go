@@ -56,13 +56,9 @@ func Interactive() echo.HandlerFunc {
 
 		switch payload.Callback_id {
 		case "signup_self":
-			{
-				// insert user's self tag
-			}
+			// insert user's self tag
 		default:
-			{
-				// do nothing
-			}
+			// do nothing
 		}
 
 		return c.JSON(http.StatusOK, H{
