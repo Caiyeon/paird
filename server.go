@@ -75,8 +75,10 @@ func main() {
 	e.POST("/v1/addsearchtags", handlers.AddSearchTags())
 	e.POST("/v1/clearalltags", handlers.ClearAllTags())
 	e.POST("/v1/mydiet", handlers.SetDiet())
-	// e.POST("/v1/myavailability", handlers.SetAvailability())
-	// e.POST("/v1/mylocation", handlers.SetLocation())
+	e.POST("/v1/myavailability", handlers.SetAvailability())
+	e.POST("/v1/mylocation", handlers.SetLocation())
+
+	e.POST("/v1/help", handlers.DisplayHelpMessage())
 
 	// launch webserver listener
 	fmt.Println("Starting webserver at port 8000")
