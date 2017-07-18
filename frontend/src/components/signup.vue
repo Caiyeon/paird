@@ -54,9 +54,9 @@
     </div> 
 
     <div class="signup_button">
-      <b-button :size="size" :variant="variant" href="">
-        {{variant}} {{size}}
-    </b-button>
+      <b-button size="" variant="primary" href="">
+        Sign Up
+      </b-button>
     </div> 
     
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
