@@ -38,6 +38,11 @@ func main() {
 	e.HideBanner = true
 
 	// middleware
+	e.Use(middleware.BodyDump(
+		func(c echo.Context, reqBody, resBody []byte) {
+			fmt.Printf("%s\n", reqBody)
+		}),
+	)
 
 	// if production, add extra security measures
 	if prod {
