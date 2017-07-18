@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/boltdb/bolt"
 	"github.com/caiyeon/lunch-with-us/handlers"
+	"github.com/caiyeon/lunch-with-us/store"
 	"github.com/caiyeon/lunch-with-us/vault"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -25,6 +27,14 @@ func main() {
 	if vault.VaultToken = os.Getenv("VAULT_TOKEN"); vault.VaultToken == "" {
 		panic("VAULT_TOKEN env var is not set!")
 	}
+
+	// open file for bolt
+	db, err := bolt.Open("bolt.db", 0600, nil)
+	if err != nil {
+		panic(err)
+	}
+	store.DB = db
+	defer db.Close()
 
 	// initialize echo webserver
 	e := echo.New()
