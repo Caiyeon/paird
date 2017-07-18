@@ -13,7 +13,7 @@
             Profile
           </b-button>
         </router-link>
-        <router-link to="/findmatch#Title">
+        <router-link to="/findmatch">
           <b-button class="TopPanelButtons" size='' variant="link" href="">
             Find Lunch Buddy
           </b-button>
@@ -23,11 +23,11 @@
             Contact Us
           </b-button>
         </router-link>
-        <b-button class="SignInButton" size='lg' variant="success" href="">
+        <b-button class="SignInButton hvr-grow" size='lg' variant="success" href="">
           Log In
         </b-button>
         <router-link to="/signup">
-          <b-button class="SignUpButton" size='lg' variant="danger" href="">
+          <b-button class="SignUpButton hvr-grow" size='lg' variant="danger" href="">
             Sign Up
           </b-button>
         </router-link>
@@ -41,7 +41,7 @@
         <h2 class="PageSubtitle">Your Meal, Your Way</h2>
       </div>
       <br></br>
-      <b-button class="GetStartedButton" size='lg' variant="primary" href="">
+      <b-button class="GetStartedButton hvr-grow" size='lg' variant="primary" href="">
           Get Started
       </b-button>
     </div>
@@ -61,7 +61,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
+} 
+@import './assets/hover-min.css';
 .Tabs {
   font-family: Helvetica, Arial, Sans-Serif;
   font-weight: bold;
