@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/caiyeon/lunch-with-us/handlers"
 	"github.com/labstack/echo"
@@ -44,6 +45,8 @@ func main() {
 	e.GET("/v1/ping", handlers.Ping())
 
 	// launch webserver listener
+	fmt.Println("Starting webserver at port 8000")
+
 	if prod {
 		e.Logger.Fatal(e.StartAutoTLS(":443"))
 	} else {
