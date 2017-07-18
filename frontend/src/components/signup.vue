@@ -53,8 +53,8 @@
       </b-form-fieldset>  
     </div> 
 
-    <div class="signup_button">
-      <b-button size="" variant="primary" href="">
+    <div class="signup_button hvr-grow">
+      <b-button size="" variant="outline-success" href="">
         Sign Up
       </b-button>
     </div> 
@@ -109,7 +109,10 @@ export default {
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
+@import './../assets/hover-min.css';
+
 h1, h2 {
   font-weight: normal;
 }
@@ -185,6 +188,12 @@ a {
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
+}
+
+.signup_button {
+  position: relatives;
+  margin-left: 800px;
+  margin-right: 800px;
 }
 
 </style>
