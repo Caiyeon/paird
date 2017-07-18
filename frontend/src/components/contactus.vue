@@ -10,18 +10,24 @@
           <h1>Contact Us</h1>
         </div>
 
-          <b-form-fieldset label="Enter your name">
-            <b-form-input v-model="name" :state="state"></b-form-input>
-          </b-form-fieldset>
+        <b-form-fieldset label="Enter your name">
+          <b-form-input v-model="name" :state="state"></b-form-input>
+        </b-form-fieldset>
 
-          <b-form-fieldset label="Enter your email">
-            <b-form-input v-model="name" :state="state"></b-form-input>
-          </b-form-fieldset>  
+        <b-form-fieldset label="Enter your email">
+          <b-form-input v-model="name" :state="state"></b-form-input>
+        </b-form-fieldset>  
 
-          <b-form-fieldset label="Enter your message">
-            <b-form-input v-model="name" :state="state" id="message-box"></b-form-input>
-          </b-form-fieldset>  
-          
+        <b-form-fieldset label="Enter your message">
+          <b-form-input v-model="name" :state="state" id="message-box"></b-form-input>
+        </b-form-fieldset>  
+
+        <div class="signup_button hvr-grow">
+          <b-button size="" variant="success" href="">
+            Sign Up
+          </b-button>
+        </div> 
+
       </div>
     </div>
 
