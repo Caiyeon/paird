@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// setup persistence layer
-	if err := store.CreateAndOpen("bolt.db"); err != nil {
+	if err := store.Initialize("bolt.db"); err != nil {
 		panic(err)
 	}
 	defer store.CloseDB()
@@ -38,6 +38,12 @@ func main() {
 	e.HideBanner = true
 
 	// middleware
+	e.Use(middleware.BodyDump(
+		func(c echo.Context, reqBody, resBody []byte) {
+			fmt.Printf("Request body:\n%s\n\n", reqBody)
+			fmt.Printf("Response body:\n%s\n\n", resBody)
+		}),
+	)
 
 	// if production, add extra security measures
 	if prod {
@@ -57,6 +63,8 @@ func main() {
 
 	// api routing
 	e.GET("/v1/ping", handlers.Ping())
+	e.POST("/v1/signup", handlers.Signup())
+	e.POST("/v1/interactive", handlers.Interactive())
 
 	// launch webserver listener
 	fmt.Println("Starting webserver at port 8000")
