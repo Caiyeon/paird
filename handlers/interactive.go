@@ -8,7 +8,7 @@ import (
 )
 
 type Payload struct {
-	Actions       []map[string]string
+	Actions       []ActionStruct
 	Callback_id   string
 	Team          TeamStruct
 	Channel       ChannelStruct
@@ -19,6 +19,12 @@ type Payload struct {
 	Token         string
 	Is_app_unfurl bool
 	Response_url  string
+}
+
+type ActionStruct struct {
+	Name  string
+	Type  string
+	Value string
 }
 
 type TeamStruct struct {
@@ -54,12 +60,20 @@ func Interactive() echo.HandlerFunc {
 			})
 		}
 
+		text := ""
 		switch payload.Callback_id {
 		case "signup_self":
+			if payload.Actions[0].Value == "mentor" || payload.Actions[0].Value == "mentee" {
+				text = "Ok, you are signing up as a " + payload.Actions[0].Value
+			} else {
+				text = "Ok, you don't mind being either"
+			}
 			// insert user's self tag
 		default:
 			// do nothing
 		}
+
+		text = text + "\nAre you looking for a:"
 
 		return c.JSON(http.StatusOK, H{
 			"text": "Step 2:",
