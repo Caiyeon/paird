@@ -62,7 +62,7 @@ func main() {
 
 	// api routing
 	e.GET("/v1/ping", handlers.Ping())
-	e.GET("/v1/signup", handlers.Signup())
+	e.POST("/v1/signup", handlers.Signup())
 
 	// launch webserver listener
 	fmt.Println("Starting webserver at port 8000")
