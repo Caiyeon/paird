@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// setup persistence layer
-	if err := store.CreateAndOpen("bolt.db"); err != nil {
+	if err := store.Initialize("bolt.db"); err != nil {
 		panic(err)
 	}
 	defer store.CloseDB()
