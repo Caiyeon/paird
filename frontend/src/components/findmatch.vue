@@ -8,10 +8,6 @@
     </div>
     <div class="profilesection">
       <br></br>
-      <h5 class="foundmatch">
-        Found A Match!
-      </h5>
-      <br></br>
       <br></br>
       <div>
         <b-card class="profile hvr-grow">
@@ -89,6 +85,7 @@ a {
   margin-left: 200px;
   width: 500px;
   background-image: url(./../assets/ProfileBackground.jpg);
+  background-size: 700px 600px;
   height: 600px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -101,12 +98,14 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .restaurantprofileimg {
-
-}
-.profileimg {
   width: 250px;
   text-align: center;
   margin-left: 100px;
+}
+.profileimg {
+  width: 220px;
+  text-align: center;
+  margin-left: 120px;
 }
 .lunchbuddytitle {
   font-size: 48px;
