@@ -1,0 +1,14 @@
+dependencies:
+  override:
+    # force clean cache
+    - rm -rf /home/ubuntu/.go_workspace/src
+    # make parent folder (since it shouldn't exist now)
+    - mkdir -p /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+    # copy cloned folder into $GOPATH so vendor folder will work
+    - cd .. && mv -f goldfish /home/ubuntu/.go_workspace/src/github.com/lunch-with-us
+
+test:
+  override:
+    - cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+    - env GOOS=linux GOARCH=amd64 go build -o lunch-with-us -v github.com/caiyeon/lunch-with-us
+    - mv lunch-with-us $CIRCLE_ARTIFACTS
