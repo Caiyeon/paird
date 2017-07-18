@@ -2,39 +2,32 @@ package store
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/boltdb/bolt"
 )
 
 // returns whether teamname (aka domain name) exists in db
 func DoesTeamExist(teamname string) (bool, error) {
-	// start a transaction
-	tx, err := db.Begin(true)
-	if err != nil {
+	// found flag keeps track of whether the team name has been found in db
+	found := false
+
+	// open a read-only transaction
+	if err := db.View(func(tx *bolt.Tx) error {
+		// get the root teams bucket
+		teams := tx.Bucket([]byte("teams"))
+		if teams == nil {
+			return errors.New("'teams' bucket does not exist")
+		}
+
+		// if the sub bucket returns nil, then team does not exist
+		found = teams.Bucket([]byte(teamname)) != nil
+		return nil
+	}); err != nil {
 		return false, err
 	}
-	defer tx.Rollback()
 
-	// find teams bucket
-	teamsBucket := tx.Bucket([]byte("teams"))
-	if teamsBucket == nil {
-		return false, errors.New("'teams' bucket does not exist")
-	}
-
-	// search in teams bucket for specific team name
-	cursor := teamsBucket.Cursor()
-	found := false
-	for key, value := cursor.First(); key != nil && !found; key, value = cursor.Next() {
-		// buckets have value equal to nil
-		if value == nil && fmt.Sprintf("%s", key) == teamname {
-			found = true
-		}
-	}
-
-	// commit transaction and check for error
-	err = tx.Commit()
-	return found, err
+	// no errors occured using database, return found flag
+	return found, nil
 }
 
 // if team exists, do nothing. If team doesn't exist, create a bucket for it
