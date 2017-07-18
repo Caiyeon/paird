@@ -3,11 +3,20 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/caiyeon/lunch-with-us/store"
 	"github.com/labstack/echo"
 )
 
 func Signup() echo.HandlerFunc {
 	return func(c echo.Context) error {
+		if team := c.FormValue("team_domain"); team == "" {
+			return c.JSON(http.StatusBadRequest, H{
+				"error": "team domain cannot be empty",
+			})
+		} else {
+			store.AddTeamIfNotExists(team)
+		}
+
 		return c.JSON(http.StatusOK, H{
 			"text": "Welcome!",
 			"attachments": []interface{}{

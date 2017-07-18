@@ -2,6 +2,8 @@ package store
 
 import (
 	"errors"
+	"fmt"
+	"strings"
 
 	"github.com/boltdb/bolt"
 )
@@ -35,6 +37,91 @@ func DoesUserExistInTeam(username, teamname string) (bool, error) {
 	return found, nil
 }
 
-func AddUserIfNotExists(username, teamname string, properties map[string]string) error {
-	return nil
+func AddUserIfNotExists(username, teamname string) error {
+	return db.Update(func(tx *bolt.Tx) error {
+		teams := tx.Bucket([]byte("teams"))
+		if teams == nil {
+			return errors.New("'teams' bucket does not exist")
+		}
+		team := teams.Bucket([]byte(teamname))
+		if team == nil {
+			return errors.New("team " + teamname + " does not exist")
+		}
+		_, err := team.CreateBucketIfNotExists([]byte(username))
+		return err
+	})
+}
+
+func AddSelfTags(username, teamname string, tags []string) error {
+	return db.Update(func(tx *bolt.Tx) error {
+		teams := tx.Bucket([]byte("teams"))
+		if teams == nil {
+			return errors.New("'teams' bucket does not exist")
+		}
+		team := teams.Bucket([]byte(teamname))
+		if team == nil {
+			return errors.New("team " + teamname + " does not exist")
+		}
+		user, err := team.CreateBucketIfNotExists([]byte(username))
+		if err != nil {
+			return err
+		}
+
+		// key : value => 'tags' : []string{}
+		// fetch existing tags
+		var prevTags []string
+		if exists := user.Get([]byte("self-tags")); exists != nil {
+			prevTags = strings.Split(fmt.Sprintf("%s", exists), ",")
+		}
+		return user.Put([]byte("self-tags"), []byte(strings.Join(append(prevTags, tags...), ",")))
+	})
+}
+
+func AddSearchTags(username, teamname string, tags []string) error {
+	return db.Update(func(tx *bolt.Tx) error {
+		teams := tx.Bucket([]byte("teams"))
+		if teams == nil {
+			return errors.New("'teams' bucket does not exist")
+		}
+		team := teams.Bucket([]byte(teamname))
+		if team == nil {
+			return errors.New("team " + teamname + " does not exist")
+		}
+		user, err := team.CreateBucketIfNotExists([]byte(username))
+		if err != nil {
+			return err
+		}
+
+		// key : value => 'tags' : []string{}
+		// fetch existing tags
+		var prevTags []string
+		if exists := user.Get([]byte("search-tags")); exists != nil {
+			prevTags = strings.Split(fmt.Sprintf("%s", exists), ",")
+		}
+		return user.Put([]byte("search-tags"), []byte(strings.Join(append(prevTags, tags...), ",")))
+	})
+}
+
+func ClearAllTags(username, teamname string) error {
+	return db.Update(func(tx *bolt.Tx) error {
+		teams := tx.Bucket([]byte("teams"))
+		if teams == nil {
+			return errors.New("'teams' bucket does not exist")
+		}
+		team := teams.Bucket([]byte(teamname))
+		if team == nil {
+			return errors.New("team " + teamname + " does not exist")
+		}
+		user, err := team.CreateBucketIfNotExists([]byte(username))
+		if err != nil {
+			return err
+		}
+		if err := user.Delete([]byte("self-tags")); err != nil {
+			return err
+		}
+		if err := user.Delete([]byte("search-tags")); err != nil {
+			return err
+		}
+		return nil
+	})
 }

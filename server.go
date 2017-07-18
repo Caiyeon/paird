@@ -69,6 +69,12 @@ func main() {
 	e.POST("/v1/signup", handlers.Signup())
 	e.POST("/v1/interactive", handlers.Interactive())
 
+	// slash command api routing
+	e.POST("/v1/listtags", handlers.ListTags())
+	e.POST("/v1/addmytags", handlers.AddMyTags())
+	e.POST("/v1/addsearchtags", handlers.AddSearchTags())
+	e.POST("/v1/clearalltags", handlers.ClearAllTags())
+
 	// launch webserver listener
 	fmt.Println("Starting webserver at port 8000")
 
