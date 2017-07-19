@@ -24,10 +24,53 @@
 
         <div class="signup_button hvr-grow">
           <b-button size="" variant="success" href="">
-            Sign Up
+            Sumbit
           </b-button>
         </div> 
 
+      </div>
+
+      <div class="col-md-4">
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Pair'd Team</h4>
+            <p><i class="fa fa-building-o" style="color:white"></i>
+              &nbsp; SAP Vancouver
+              </br>&nbsp; &nbsp; &nbsp; 910 Mainland St
+              </br>&nbsp; &nbsp; &nbsp; Vancouver, BC V6B 1A9
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              </br><i class="fa fa-phone" style="color:white"></i> &nbsp; (604) 647-8888
+              </br><i class="fa fa-envelope" style="color:white"></i> &nbsp; pair'd@sap.com
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -71,10 +114,9 @@ export default {
   margin: 0 auto;
 }
 
-h1, h2 {
+h1, h2, h4{
   font-weight: initial;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 80px;
   font-style: italic;
   color: white
 }
@@ -91,5 +133,11 @@ li {
 
 a {
   color: #42b983;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+  color: white;
 }
 </style>
