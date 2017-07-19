@@ -68,6 +68,7 @@ func main() {
 	e.GET("/v1/ping", handlers.Ping())
 	e.POST("/v1/signup", handlers.Signup())
 	e.POST("/v1/interactive", handlers.Interactive())
+	e.POST("/v1/setwebhook", handlers.SetWebhook())
 
 	// slash command api routing
 	e.POST("/v1/listtags", handlers.ListTags())
