@@ -117,12 +117,12 @@ func Interactive() echo.HandlerFunc {
 
 			store.SetUserKeyValue(payload.User.Name, payload.Team.Domain, "search-type", payload.Actions[0].Value)
 
+			go FindPair(payload.User.Name, payload.Team.Domain, payload.Response_url)
+
 			return c.JSON(http.StatusOK, H{
 				"text":        text + "\nDone! You will be notified when a pairing is made!\nTo enhance your experience:",
 				"attachments": helpMessage,
 			})
-
-			go FindPair(payload.User.Name, payload.Team.Domain, payload.Response_url)
 
 		default:
 			// no callback found, return nothing in fallthrough
