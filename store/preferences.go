@@ -183,8 +183,10 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 				maxCandidate = name
 			}
 		}
-		result = append(result, maxCandidate)
-		candidates[maxCandidate] = -1
+		if maxScore > 0 {
+			result = append(result, maxCandidate)
+			candidates[maxCandidate] = -1
+		}
 	}
 
 	return result, nil
