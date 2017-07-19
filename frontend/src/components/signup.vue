@@ -77,6 +77,17 @@
       </b-form-fieldset>  
     </div> 
 
+    <div class="dietary">
+      <h8> Dietary Options </h8>
+      <b-form-radio v-model="selected" :options="options"> </b-form-radio>
+
+      <br> 
+
+      <div>
+        Selected: <strong>{{ selected}} </strong>
+      </div>  
+    </div>
+
     <div class="signup_button hvr-grow">
       <b-button size="" variant="outline-success" href="">
         Sign Up
@@ -126,7 +137,15 @@ export default {
       password: '',
       confirm: '',
       type: 'password',
-      dirty: false
+      dirty: false,
+      selected: 'first',
+      options: [{
+        text: 'Vegeterian',
+        value: 'first'
+      }, {
+        text: 'Vegan',
+        value: 'second'
+      }]
     }
   },
   methods: {
@@ -235,6 +254,7 @@ a {
 .password_prompt {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 25px;
+  color:#ffa64d;
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
