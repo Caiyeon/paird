@@ -115,6 +115,10 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 		for k, v := c.First(); k != nil; k, v = c.Next() {
 			// fetch the user's tags
 			if v == nil { // if this is a bucket, it must be a user
+				// log.Println("testing candidate" + fmt.Sprint("%s", k))
+				if fmt.Sprintf("%s", k) == username {
+					continue // dont match user with user's self
+				}
 
 				// get candidate's list of tags
 				user := team.Bucket(k)
@@ -163,6 +167,7 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 					}
 				}
 
+				// log.Println("adding candidate" + fmt.Sprint("%s", k))
 				candidates[fmt.Sprintf("%s", k)] = matches
 			}
 		}
@@ -175,7 +180,7 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 	// return the top-3 matched candidates
 	var result []string
 	for _, _ = range []int{1, 2, 3} {
-		maxScore := 0
+		maxScore := -1
 		maxCandidate := ""
 		for name, score := range candidates {
 			if score > maxScore {
@@ -183,8 +188,8 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 				maxCandidate = name
 			}
 		}
-		if maxScore > 0 {
-			result = append(result, maxCandidate)
+		if maxScore > -1 {
+			result = append(result, "@"+maxCandidate)
 			candidates[maxCandidate] = -1
 		}
 	}

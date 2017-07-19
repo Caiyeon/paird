@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"strings"
+	"strconv"
 	"time"
 
 	"github.com/caiyeon/lunch-with-us/store"
+	"github.com/caiyeon/lunch-with-us/yelp"
 )
 
 const sleepDuration = 5 * time.Second
@@ -20,8 +21,6 @@ func FindPair(username, teamname, webhook string) {
 	// delay response
 	time.Sleep(sleepDuration)
 
-	log.Println("finding pair...")
-
 	// find matches
 	matches, err := store.GetMatchingUsers(username, teamname)
 	if err != nil {
@@ -29,21 +28,77 @@ func FindPair(username, teamname, webhook string) {
 		return
 	}
 
-	text := ""
 	if len(matches) == 0 {
-		text = "No matches found so far..."
-	} else {
-		text = "Your top matches are: " + strings.Join(matches, ", ")
+		payload, err := json.Marshal(
+			map[string]interface{}{
+				"response_type":    "ephemeral",
+				"replace_original": false,
+				"text":             "No matches found so far...",
+			},
+		)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		_, err = http.Post(webhook, "application/json", bytes.NewReader(payload))
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		return
 	}
 
-	log.Println(text)
+	// if user has location, use yelp api for suggestions
+	details := []string{}
+	for _, m := range matches {
+		text := ""
+		loc, err := store.GetUserKeyValue(username, teamname, "location")
+		if err != nil {
+			details = append(details, "")
+			continue
+		}
+		loc2, err := store.GetUserKeyValue(m, teamname, "location")
+		if err != nil {
+			details = append(details, "")
+			continue
+		}
+		if loc == loc2 {
+			text = text + "You are both located in *" + loc + "*."
+		}
+
+		// optionally include dietary options
+		res, err := yelp.GetSuggestions(yelp.Location{City: loc}, time.Time{}, []string{})
+		if err != nil {
+			details = append(details, "")
+			continue
+		}
+
+		text = text + " Here's a list of nearby places that fit *both* of your dietary restrictions!\n"
+		for _, r := range res {
+			text = text + "\t" + r
+		}
+		details = append(details, text)
+	}
+
+	var attachments []interface{}
+	for i, m := range matches {
+		attachments = append(attachments, map[string]interface{}{
+			"title":           "Match #" + strconv.Itoa(i) + ": *" + m + "*",
+			"text":            details[i],
+			"mrkdwn_in":       []string{"text"},
+			"fallback":        "Unsupported slack client",
+			"color":           "#3AA3E3",
+			"attachment_type": "default",
+		})
+	}
 
 	// alert user about match
 	payload, err := json.Marshal(
 		map[string]interface{}{
 			"response_type":    "ephemeral",
 			"replace_original": false,
-			"text":             text,
+			"text":             "Pairings have been found for you!",
+			"attachments":      attachments,
 		},
 	)
 	if err != nil {
