@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/caiyeon/lunch-with-us/store"
 	"github.com/labstack/echo"
 )
 
@@ -47,6 +48,30 @@ func DisplayHelpMessage() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, H{
 			"text":        "You will be notified when a pairing is made!\nTo enhance your experience:",
 			"attachments": helpMessage,
+		})
+	}
+}
+
+func SetWebhook() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		team := c.FormValue("team_domain")
+		webhook := c.FormValue("text")
+
+		if team == "" || webhook == "" {
+			return c.JSON(http.StatusBadRequest, H{
+				"error": "team domain and webhook cannot be empty",
+			})
+		} else {
+			err := store.SetTeamWebhook(team, webhook)
+			if err != nil {
+				return c.JSON(http.StatusBadRequest, H{
+					"error": err.Error(),
+				})
+			}
+		}
+
+		return c.JSON(http.StatusOK, H{
+			"text": "Successfully set webhook!",
 		})
 	}
 }
