@@ -17,7 +17,7 @@
           </b-button>
           <router-link to="/findmatch">
             <b-button class="TopPanelButtons" size='' variant="link" href="">
-              Find Mentor/Mentee
+              Find Pair
             </b-button>
           </router-link>
           <router-link to="/contactus">
@@ -91,7 +91,7 @@ export default {
   color: white;
 }
 .SignInButton {
-  margin-left: 100px;
+  margin-left: 340px;
   font-weight: bold;
 }
 .SignUpButton {

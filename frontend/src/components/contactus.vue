@@ -54,6 +54,13 @@
         </br>
         </br>
         </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
         <div class="row">
           <div class="col-md-6">
             <h4>Pair'd Team</h4>
@@ -102,8 +109,10 @@ export default {
 }
 .ContactUs {
   background-image: url("../assets/ContactUsBackground.jpeg");
-  background-size: 100% 760px;
-  height: 760px;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 .separator {
   background-color:#FFF1D6;

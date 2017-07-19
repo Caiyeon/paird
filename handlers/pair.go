@@ -84,7 +84,7 @@ func FindPair(username, teamname, webhook string) {
 	var attachments []interface{}
 	for i, m := range matches {
 		attachments = append(attachments, map[string]interface{}{
-			"title":           "Match #" + strconv.Itoa(i) + ": *" + m + "*",
+			"title":           "Match #" + strconv.Itoa(i) + ": *@" + m + "*",
 			"text":            details[i],
 			"mrkdwn_in":       []string{"text"},
 			"fallback":        "Unsupported slack client",

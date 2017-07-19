@@ -97,7 +97,8 @@ export default {
   color: white;
 }
 .Logo-title {
-  margin-top: 50px;
+  position: relatives;
+  margin-top: 130px;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -116,10 +117,11 @@ export default {
   margin: 0 auto;
 }
 .Homepage {
-  height: 760px;
+  position: absolute;
   background-image: url("../assets/HomeBackground.jpg");
-  background-size: 100% 760px;
+  background-size: 100% 100%;
   width: 100%;
+  height: 100%;
 }
 #jumboTronStyle {
   color: #42b983;

@@ -28,9 +28,10 @@ export default {
   margin-top: 50px
 }
 .TechStack {
+  margin-top: 50px;
   background-size: 1000px 100% ;
   height: 1000px;
-  margin-left: 440px;
+  margin-left: 500px;
 }
 .separator {
   background-color:#FFF1D6;
