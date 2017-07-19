@@ -99,7 +99,7 @@ func GetMatchingUsers(username, teamname string) ([]string, error) {
 	}
 	searchTags := strings.Split(raw, ",")
 
-	var candidates map[string]int
+	candidates := make(map[string]int)
 	err = db.View(func(tx *bolt.Tx) error {
 		teams := tx.Bucket([]byte("teams"))
 		if teams == nil {

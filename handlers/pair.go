@@ -11,7 +11,7 @@ import (
 	"github.com/caiyeon/lunch-with-us/store"
 )
 
-const sleepDuration = 15 * time.Second
+const sleepDuration = 5 * time.Second
 
 // run this as a background job to find a pairing after a certain amount of time has passed
 func FindPair(username, teamname, webhook string) {
