@@ -36,7 +36,7 @@ func GetUserKeyValue(username, teamname, key string) (string, error) {
 	}
 
 	s := ""
-	err := db.View(func(tx *bolt.Tx) error {
+	err := db.Update(func(tx *bolt.Tx) error {
 		teams := tx.Bucket([]byte("teams"))
 		if teams == nil {
 			return errors.New("'teams' bucket does not exist")
