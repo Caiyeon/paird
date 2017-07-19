@@ -63,16 +63,27 @@ func GetSuggestions(loc Location, t time.Time, opts []string) ([]string, error) 
 	}
 
 	// limit response to 3
-
 	urlPrefix += "&limit=3"
+	// add time to query
+	comp :=time.Time{}
+	if t != comp{
+	urlPrefix += "open_at" + string(t.Unix())
+	}
 
-	// payload := strings.NewReader("key=lwu&cipher="+ cipher)
+	//format link with given options
+	if len(opts) != 0 {
+		urlPrefix += "&term="
+		for _, option := range opts {
+			urlPrefix += option
+		}
+	}
+	fmt.Println(urlPrefix)
+
 	req, err := http.NewRequest("GET", urlPrefix, nil)
     if err != nil {
         log.Print(err)
     }
     req.Header.Add("authorization", "Bearer " + AccessToken)
-    // req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
     resp, err := client.Do(req)
     defer resp.Body.Close()
     fmt.Println("Yelp request status is ",resp.Status)

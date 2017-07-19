@@ -12,18 +12,58 @@
                 <img src="../assets/PearLogo.png">
               </div>
               <div class="col-md-8">
-                <h1>Pair'd</h1>
+                <h1>Getting Started</h1>
                 <p>Pair'd is an app that will revolutionize the way you spend your lunch hours!</p>
-                <p>First, create a profile describing your interests and lunch preferences.  The
-                  app will then pair you with colleagues that share the same tastes!  Pair'd 
-                  also recommends restaurants that both of you would like!  Pair'd makes
-                  arranging lunch outings easy!</p>
+                
+                </br>
+              
+                <div class="row">
+                  <div class="col-md-2">
+                    <div id="circle">1</div>
+                  </div>
+                  <div class="col-md-8">
+                    <p>Create a profile describing your interests and lunch preferences.</p>
+                    <b-button size='' variant="primary" href="" class="button-style">
+                      Profile
+                    </b-button>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-2">
+                    <div id="circle">2</div>
+                  </div>
+                  <div class="col-md-8">
+                    <p>Go to the "Find Lunch Buddy" page and click "Find Match".</p>
+                    <b-button size='' variant="primary" href="" class="button-style">
+                      Find Lunch Buddy
+                    </b-button>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                  <div class="col-md-2">
+                    <div id="circle">3</div>
+                  </div>
+                  <div class="col-md-8">
+                    <p>Pair'd will match you up with another colleague and will
+                      recommend a restaurant based on your food preferences.</p>
+                  </div>
+                </div>
+
                 </p>
               </div>
             </div>
           </div>
-          
-          <div class="col-md-3"></div>
+
+          <div class="col-md-3">
+
+            
+          </div>
         </div>
       </div>
       <div class="separator"></div>
@@ -38,16 +78,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.button-style {
+  background-color: #008CBA;
+  opacity: 1;
+  width: 75%;
+}
+#circle {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background: #FF970F;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20;
+  color: white;
+}
 .Logo-title {
   margin-top: 50px;
   padding: 20px;
-  background-color: #A66FA6;
   border-radius: 8px;
-  opacity: 0.9;
-  text-align: center
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .separator {
-  background-color:#6F256F;
+  background-color:#FFF1D6;
   height:125px;
   width:100%;
   margin: 0 auto;
@@ -94,6 +153,11 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 15pt;
-  color: white
+  color: white;
+  text-align: left;
+}
+
+hr {
+  border: 1px solid #ccc;
 }
 </style>

@@ -83,3 +83,34 @@ func ListTeamTags(teamname string) (map[string]int, error) {
 
 	return tags, err
 }
+
+func SetTeamWebhook(teamname, webhook string) error {
+	if teamname == "" || webhook == "" {
+		return errors.New("Teamname and webhook cannot be empty")
+	}
+	return db.Update(func(tx *bolt.Tx) error {
+		webhooks, err := tx.CreateBucketIfNotExists([]byte("webhooks"))
+		if err != nil {
+			return err
+		}
+		return webhooks.Put([]byte(teamname), []byte(webhook))
+	})
+}
+
+func GetTeamWebhook(teamname string) (string, error) {
+	if teamname == "" {
+		return "", errors.New("Teamname cannot be empty")
+	}
+
+	s := ""
+	err := db.Update(func(tx *bolt.Tx) error {
+		webhooks, err := tx.CreateBucketIfNotExists([]byte("webhooks"))
+		if err != nil {
+			return err
+		}
+		s = fmt.Sprintf("%s", webhooks.Get([]byte(teamname)))
+		return nil
+	})
+
+	return s, err
+}
