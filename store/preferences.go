@@ -49,7 +49,7 @@ func GetUserKeyValue(username, teamname, key string) (string, error) {
 		if err != nil {
 			return err
 		}
-		s = fmt.Sprintf("%s", user.Get([]byte("diet")))
+		s = fmt.Sprintf("%s", user.Get([]byte("location")))
 		return nil
 	})
 	return s, err

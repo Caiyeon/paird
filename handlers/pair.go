@@ -65,6 +65,7 @@ func FindPair(username, teamname, webhook string) {
 		if loc == loc2 {
 			text = text + "You are both located in *" + loc + "*."
 		}
+		log.Println("Location: " + loc)
 
 		// optionally include dietary options
 		res, err := yelp.GetSuggestions(yelp.Location{City: loc}, time.Time{}, []string{})
