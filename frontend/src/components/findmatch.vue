@@ -102,9 +102,6 @@
       <br></br>
       <br></br>
     </div>
-    <div class="footer">
-      Footer
-    </div>
   </div>
 </template>
 
@@ -207,10 +204,10 @@ ul {
   margin: 0 auto;
 }
 .Homepage {
-  height: 760px;
+  height: 810px;
   width: 100%;
   background-image: url("../assets/FindMatchBackground.jpeg");
-  background-size: 100% 760px;
+  background-size: 100% 810px;
 }
 .Homepage::after {
   opacity: 0.7;

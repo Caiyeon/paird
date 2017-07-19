@@ -12,11 +12,9 @@
               Get Started
             </b-button>
           </router-link>
-          <router-link to="/profile">
-            <b-button class="TopPanelButtons" size='' variant="link" href="">
-              Profile
-            </b-button>
-          </router-link>
+          <b-button class="TopPanelButtons" size='' variant="link" href="">
+            Profile
+          </b-button>
           <router-link to="/findmatch">
             <b-button class="TopPanelButtons" size='' variant="link" href="">
               Find Mentor/Mentee
