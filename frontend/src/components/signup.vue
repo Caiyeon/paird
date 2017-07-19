@@ -82,10 +82,6 @@
       <b-form-radio v-model="selected" :options="options"> </b-form-radio>
 
       <br> 
-
-      <div>
-        Selected: <strong>{{ selected}} </strong>
-      </div>  
     </div>
 
     <div class="signup_button hvr-grow">
@@ -211,7 +207,6 @@ a {
 .signup {
   display: inline-block;
   position: relative;
-
 }
 .signup::before {
   content: "";
@@ -254,7 +249,7 @@ a {
 .password_prompt {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 25px;
-  color:#ffa64d;
+  color:rgb(240, 173, 79);
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
@@ -309,6 +304,15 @@ a {
   font-size: 25px;
   position: relatives;
   margin-top: 20px;
+  margin-left: 600px;
+  margin-right: 600px;
+}
+
+.dietary {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color:rgb(240, 173, 79);
+  position: relatives;
   margin-left: 600px;
   margin-right: 600px;
 }
