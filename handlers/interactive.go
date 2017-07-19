@@ -122,6 +122,8 @@ func Interactive() echo.HandlerFunc {
 				"attachments": helpMessage,
 			})
 
+			go FindPair(payload.User.Name, payload.Team.Domain, payload.Response_url)
+
 		default:
 			// no callback found, return nothing in fallthrough
 		}
