@@ -149,6 +149,10 @@ ul {
 }
 .profilesection {
   background-image: url(./../assets/SecondaryBackground.jpg);
+  height: 970px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 970px;
 }
 .profile {
   margin-left: 200px;
@@ -204,10 +208,11 @@ ul {
   margin: 0 auto;
 }
 .Homepage {
-  height: 810px;
+  height: 880px;
   width: 100%;
   background-image: url("../assets/FindMatchBackground.jpeg");
-  background-size: 100% 810px;
+  background-repeat: no-repeat;
+  background-size: 100% 880px;
 }
 .Homepage::after {
   opacity: 0.7;

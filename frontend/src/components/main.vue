@@ -65,28 +65,33 @@ export default {
   color: black;
 }
 .Top_Panel {
+  position:absolute;
   background-image: url("./../assets/MainBackground.jpg");
-  background-size: 100% 760px;
   width: 100%;
-  height: 760px;
+  height: 100%;
+  background-size: 100% 100%;
   opacity: 0.8;
 }
 .PageTitle {
+position: relatives;
 font-family: 'droid';
 font-style: italic;
 color: white;
-margin-left: 250px;
+margin-left: 330px;
 font-size: 72px;
 }
 .PageSubtitle {
+position: relatives;
 font-family: 'Arial';
 font-style: italic;
 color: white;
-margin-left: 600px;
+margin-top: 100px;
+margin-left: 700px;
 font-size: 32px;
 }
 .GetStartedButton {
-  margin-left:680px;
+  position: relatives;
+  margin-left: 770px;
   font-size: 24px;
   color: white;
 }
