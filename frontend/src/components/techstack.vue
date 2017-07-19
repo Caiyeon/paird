@@ -1,6 +1,6 @@
 <template>
     <div class="TechStack">
-      <img src="../assets/TechStackDiagram.png" height="80%">
+      <img src="../assets/TechStack.png" height="80%">
     </div>
 </template>
 
