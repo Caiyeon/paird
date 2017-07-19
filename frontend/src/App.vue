@@ -1,50 +1,47 @@
 <template>
   <div id="app">
-    <div class="Top_Panel">
-      <br></br>
-      <div>
-        <router-link to="/">
-          <b-button class="TopPanelButtons" size='' variant="link" href="">
-            Home
+      <b-navbar toggleable type="inverse" variant="warning">
+        <div>
+          <router-link to="/">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Home
+            </b-button>
+          </router-link>
+          <router-link to="/getstarted">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Get Started
+            </b-button>
+          </router-link>
+          <router-link to="/profile">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Profile
+            </b-button>
+          </router-link>
+          <router-link to="/findmatch">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Find Lunch Buddy
+            </b-button>
+          </router-link>
+          <router-link to="/contactus">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Contact Us
+            </b-button>
+          </router-link>
+          <router-link to="/techstack">
+            <b-button class="TopPanelButtons" size='' variant="link" href="">
+              Tech Stack
+            </b-button>
+          </router-link>
+          <b-button class="SignInButton hvr-grow" size='lg' variant="success" href="">
+            Log In
           </b-button>
-        </router-link>
-        <router-link to="/profile">
-          <b-button class="TopPanelButtons" size='' variant="link" href="">
-            Profile
-          </b-button>
-        </router-link>
-        <router-link to="/findmatch">
-          <b-button class="TopPanelButtons" size='' variant="link" href="">
-            Find Lunch Buddy
-          </b-button>
-        </router-link>
-        <router-link to="/contactus">
-          <b-button class="TopPanelButtons" size='' variant="link" href="">
-            Contact Us
-          </b-button>
-        </router-link>
-        <b-button class="SignInButton hvr-grow" size='lg' variant="success" href="">
-          Log In
-        </b-button>
-        <router-link to="/signup">
-          <b-button class="SignUpButton hvr-grow" size='lg' variant="danger" href="">
-            Sign Up
-          </b-button>
-        </router-link>
-      </div>
-      <br></br>
-      <div>
-        <h1 class="PageTitle">Pair'd</h1>
-      </div>
-      <br></br>
-      <div>
-        <h2 class="PageSubtitle">Your Meal, Your Way</h2>
-      </div>
-      <br></br>
-      <b-button class="GetStartedButton hvr-grow" size='lg' variant="primary" href="">
-          Get Started
-      </b-button>
-    </div>
+          <router-link to="/signup">
+            <b-button class="SignUpButton hvr-grow" size='lg' variant="danger" href="">
+              Sign Up
+            </b-button>
+          </router-link>
+        </div>
+      </b-navbar>
     <router-view></router-view>
   </div>
 </template>
@@ -94,10 +91,9 @@ export default {
   margin-left:30px;
   font-size: 24px;
   color: white;
-  text-decoration: underline;
 }
 .SignInButton {
-  margin-left: 520px;
+  margin-left: 100px;
   font-weight: bold;
 }
 .SignUpButton {

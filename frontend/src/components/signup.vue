@@ -123,9 +123,9 @@ export default {
     state_pname () {
       return this.pname.length ? 'success' : 'warning'
     },
-/*     state_password () {
+    state_password () {
       return this.password.length ? 'success' : 'warning'
-    }, */
+    },
     state_confirm () {
       return this.confirm.length ? 'success' : 'warning'
     }

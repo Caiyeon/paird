@@ -71,7 +71,19 @@ func AddSelfTags(username, teamname string, tags []string) error {
 		// fetch existing tags
 		var prevTags []string
 		if exists := user.Get([]byte("self-tags")); exists != nil {
-			prevTags = strings.Split(fmt.Sprintf("%s", exists), ",")
+			temp := strings.Split(fmt.Sprintf("%s", exists), ",")
+			// don't add duplicate keys
+			found := false
+			for _, tag1 := range temp {
+				for _, tag2 := range tags {
+					if tag1 == tag2 {
+						found = true
+					}
+				}
+				if !found {
+					prevTags = append(prevTags, tag1)
+				}
+			}
 		}
 		return user.Put([]byte("self-tags"), []byte(strings.Join(append(prevTags, tags...), ",")))
 	})
@@ -96,7 +108,19 @@ func AddSearchTags(username, teamname string, tags []string) error {
 		// fetch existing tags
 		var prevTags []string
 		if exists := user.Get([]byte("search-tags")); exists != nil {
-			prevTags = strings.Split(fmt.Sprintf("%s", exists), ",")
+			temp := strings.Split(fmt.Sprintf("%s", exists), ",")
+			// don't add duplicate keys
+			found := false
+			for _, tag1 := range temp {
+				for _, tag2 := range tags {
+					if tag1 == tag2 {
+						found = true
+					}
+				}
+				if !found {
+					prevTags = append(prevTags, tag1)
+				}
+			}
 		}
 		return user.Put([]byte("search-tags"), []byte(strings.Join(append(prevTags, tags...), ",")))
 	})

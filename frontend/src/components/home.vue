@@ -1,7 +1,6 @@
 <template>
    <div id="Home" class="Home">
       <!-- <h1>This is the homepage</h1> -->
-      <div class="separator"></div>
       <div class="row">
         <div class="Homepage row">
           <div class="col-md-3"></div>
@@ -66,7 +65,6 @@
           </div>
         </div>
       </div>
-      <div class="separator"></div>
   </div>
 </template>
 
