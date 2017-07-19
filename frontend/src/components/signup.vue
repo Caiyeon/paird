@@ -4,7 +4,7 @@
       <h8>Welcome to Pair'd</h8>
     </div>
 
-    <br> <br>
+    <br> 
 
     <div class="slack_account">
       <b-form-fieldset 
@@ -79,13 +79,19 @@
 
     <div class="dietary">
       <h8> Dietary Options </h8>
-      <b-form-radio v-model="selected" :options="options"> </b-form-radio>
-
+      <br> 
+      <div class="options"> 
+        <b-form-radio v-model="selected" 
+        :options="options" 
+        :feedback="feedback_dietary"
+        :state="state_dietary"> 
+        </b-form-radio>
+      </div>
       <br> 
     </div>
 
     <div class="signup_button hvr-grow">
-      <b-button size="" variant="outline-success" href="">
+      <b-button size="big" variant="outline-success" href="">
         Sign Up
       </b-button>
     </div> 
@@ -113,6 +119,9 @@ export default {
     feedback_confirm () {
       return this.confirm.length ? '' : 'Invalid'
     },
+    feedback_dietary () {
+      return this.selected.length ? '' : 'Invalid'
+    },
     state_slack () {
       return this.slack.length ? 'success' : 'warning'
     },
@@ -124,6 +133,9 @@ export default {
     },
     state_confirm () {
       return this.confirm.length ? 'success' : 'warning'
+    },
+    state_dietary () {
+      return this.selected.length ? 'success' : 'warning'
     }
   },
   data () {
@@ -227,12 +239,12 @@ a {
   font-size: 60px;
   text-align: center;
   color: black;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .slack_account {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
@@ -240,7 +252,7 @@ a {
 
 .profile_name {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
@@ -248,7 +260,7 @@ a {
 
 .password_prompt {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   color:rgb(240, 173, 79);
   position: relatives;
   margin-left: 600px;
@@ -301,7 +313,7 @@ a {
 
 .password_confirm {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   position: relatives;
   margin-top: 20px;
   margin-left: 600px;
@@ -310,11 +322,20 @@ a {
 
 .dietary {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   color:rgb(240, 173, 79);
   position: relatives;
   margin-left: 600px;
   margin-right: 600px;
+}
+
+.options {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  color:rgb(240, 173, 79);
+  position: relatives;
+  margin-top: 20px;
+  margin-left: 100px;
 }
 
 .signup_button {
