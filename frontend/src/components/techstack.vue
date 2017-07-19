@@ -1,42 +1,12 @@
 <template>
-  <div>
-    <div class="ContactUs">
-
-    <div class="row">
-      <div class="col-md-6 form-class">
-
-        <div class="heading-title">
-          <h1>Contact Us</h1>
-        </div>
-
-        <b-form-fieldset label="Enter your name">
-          <b-form-input v-model="name" :state="state"></b-form-input>
-        </b-form-fieldset>
-
-        <b-form-fieldset label="Enter your email">
-          <b-form-input v-model="name" :state="state"></b-form-input>
-        </b-form-fieldset>  
-
-        <b-form-fieldset label="Enter your message">
-          <b-form-input v-model="name" :state="state" id="message-box"></b-form-input>
-        </b-form-fieldset>  
-
-        <div class="signup_button hvr-grow">
-          <b-button size="" variant="success" href="">
-            Sign Up
-          </b-button>
-        </div> 
-
-      </div>
+    <div class="TechStack">
+      <img src="../assets/TechStackDiagram.png" height="80%">
     </div>
-
-    </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'contactus'
+  name: 'TechStack'
 }
 </script>
 
@@ -57,10 +27,10 @@ export default {
   text-align: center;
   margin-top: 50px
 }
-.ContactUs {
-  background-image: url("../assets/ContactUsBackground.jpeg");
-  background-size: 100% 760px;
-  height: 760px;
+.TechStack {
+  background-size: 1000px 100% ;
+  height: 1000px;
+  margin-left: 440px;
 }
 .separator {
   background-color:#FFF1D6;
