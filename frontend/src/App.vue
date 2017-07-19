@@ -50,8 +50,24 @@
 </template>
 
 <script>
+import VuePassword from 'vue-password'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    VuePassword
+  },
+  data () {
+    return {
+      user: {
+        email: '',
+        password: ''
+      },
+      score: 0
+    }
+  },
+  methods: {
+  }
 }
 </script>
 
