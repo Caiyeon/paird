@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// setup persistence layer
-	if err := store.CreateAndOpen("bolt.db"); err != nil {
+	if err := store.Initialize("bolt.db"); err != nil {
 		panic(err)
 	}
 	defer store.CloseDB()
@@ -38,6 +38,12 @@ func main() {
 	e.HideBanner = true
 
 	// middleware
+	e.Use(middleware.BodyDump(
+		func(c echo.Context, reqBody, resBody []byte) {
+			fmt.Printf("Request body:\n%s\n\n", reqBody)
+			fmt.Printf("Response body:\n%s\n\n", resBody)
+		}),
+	)
 
 	// if production, add extra security measures
 	if prod {
@@ -55,8 +61,25 @@ func main() {
 		}))
 	}
 
+	// serve static folder
+	e.Static("/", "lunch-with-us/docs")
+
 	// api routing
 	e.GET("/v1/ping", handlers.Ping())
+	e.POST("/v1/signup", handlers.Signup())
+	e.POST("/v1/interactive", handlers.Interactive())
+	e.POST("/v1/setwebhook", handlers.SetWebhook())
+
+	// slash command api routing
+	e.POST("/v1/listtags", handlers.ListTags())
+	e.POST("/v1/addmytags", handlers.AddMyTags())
+	e.POST("/v1/addsearchtags", handlers.AddSearchTags())
+	e.POST("/v1/clearalltags", handlers.ClearAllTags())
+	e.POST("/v1/mydiet", handlers.SetDiet())
+	e.POST("/v1/myavailability", handlers.SetAvailability())
+	e.POST("/v1/mylocation", handlers.SetLocation())
+
+	e.POST("/v1/help", handlers.DisplayHelpMessage())
 
 	// launch webserver listener
 	fmt.Println("Starting webserver at port 8000")
