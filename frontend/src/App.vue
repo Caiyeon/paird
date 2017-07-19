@@ -19,7 +19,7 @@
           </router-link>
           <router-link to="/findmatch">
             <b-button class="TopPanelButtons" size='' variant="link" href="">
-              Find Lunch Buddy
+              Find Mentor/Mentee
             </b-button>
           </router-link>
           <router-link to="/contactus">

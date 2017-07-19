@@ -10,8 +10,8 @@
                 <img src="../assets/PearLogo.png">
               </div>
               <div class="col-md-8">
-                <h1>Finding a Lunch Buddy</h1>
-                <p>Follow the below steps and find a restaurant and lunch buddy that meet your preferences!</p>
+                <h1>Finding a Mentor/Mentee</h1>
+                <p>Follow the below steps and find a restaurant and mentor/mentee that meet your preferences!</p>
                 
                 </br>
               
@@ -21,7 +21,7 @@
                   </div>
                   <div class="col-md-8">
                     <p>If you are a new member, please create an account with us first!</p>
-                    <b-button size='' variant="primary" href="" class="button-style">
+                    <b-button size='' variant="warning" href="" class="button-style">
                       Sign-Up
                     </b-button>
                   </div>
@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-md-8">
                     <p>Make sure that your profile is set up correctly so we know your preferences!</p>
-                    <b-button size='' variant="primary" href="" class="button-style">
+                    <b-button size='' variant="warning" href="" class="button-style">
                       View Profile
                     </b-button>
                   </div>
@@ -192,7 +192,7 @@ ul {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  background-color: rgba(211, 0,148, 0.6);
+  background-color: rgba(0, 0,0, 0.6);
 }
 .separator {
   background-color:#FFF1D6;
@@ -208,9 +208,12 @@ ul {
 }
 .Homepage {
   height: 760px;
+  width: 100%;
   background-image: url("../assets/FindMatchBackground.jpeg");
   background-size: 100% 760px;
-  width: 100%;
+}
+.Homepage::after {
+  opacity: 0.7;
 }
 #jumboTronStyle {
   color: #42b983;

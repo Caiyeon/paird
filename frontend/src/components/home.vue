@@ -12,7 +12,7 @@
               </div>
               <div class="col-md-8">
                 <h1>Getting Started</h1>
-                <p>Pair'd is an app that will revolutionize the way you spend your lunch hours!</p>
+                <p>Pair'd is an app that will revolutionize the way you find a mentor or mentee!</p>
                 
                 </br>
               
@@ -35,9 +35,9 @@
                     <div id="circle">2</div>
                   </div>
                   <div class="col-md-8">
-                    <p>Go to the "Find Lunch Buddy" page and click "Find Match".</p>
+                    <p>Go to the "Find Mentor/Mentee" page and click "Find Match".</p>
                     <b-button size='' variant="primary" href="" class="button-style">
-                      Find Lunch Buddy
+                      Find Mentor
                     </b-button>
                   </div>
                 </div>

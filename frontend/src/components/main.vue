@@ -2,13 +2,23 @@
   <div id="app">
     <div class="Top_Panel">
       <br></br>
-      <br></br>
-      <div>
-        <h1 class="PageTitle">Pair'd</h1>
+      <div class="row PageTitle">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+            <img src="./../assets/MainPage_Pearlogo.png"/>
+        </div>
+        <div class="col-md-1">
+            <br>
+            <h8>Pair'd</h8>
+        </div>
+        <div class="col-md-1">
+            <img src="./../assets/MainPage_Pearlogo.png"/>
+        </div>
       </div>
       <br></br>
       <div>
-        <h2 class="PageSubtitle">Your Meal, Your Way</h2>
+        <h2 class="PageSubtitle">Find Your Mentor Today</h2>
       </div>
       <br></br>
       <b-button class="GetStartedButton hvr-grow" size='lg' variant="primary" href="">
@@ -59,6 +69,7 @@ export default {
   background-size: 100% 760px;
   width: 100%;
   height: 760px;
+  opacity: 0.8;
 }
 .PageTitle {
 font-family: 'droid';
@@ -71,11 +82,11 @@ font-size: 72px;
 font-family: 'Arial';
 font-style: italic;
 color: white;
-margin-left: 200px;
+margin-left: 600px;
 font-size: 32px;
 }
 .GetStartedButton {
-  margin-left:260px;
+  margin-left:680px;
   font-size: 24px;
   color: white;
 }
