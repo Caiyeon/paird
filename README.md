@@ -42,3 +42,23 @@ Special thanks to Mozilla for certificates from Let's Encrypt
 
 And credits to Yonni Luu for the following diagram:
 ![](screenshots/tech_stack.png)
+
+
+---
+
+### Screenshots
+![](screenshots/paird.png)
+![](screenshots/listtags.png)
+![](screenshots/signup1.png)
+![](screenshots/signup2.png)
+![](screenshots/signup3.png)
+
+---
+
+### Contributors
+
+* Henry Mai - frontend design & development
+* Vivy Wang - frontend design & development
+* Otto Lau - frontend design & development
+* Tony Cai - backend design & development
+* Yonni Luu - backend design & development
