@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/caiyeon/lunch-with-us/vault"
+	"github.com/caiyeon/paird/vault"
 )
 
 var (

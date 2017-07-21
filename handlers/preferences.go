@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/caiyeon/lunch-with-us/store"
+	"github.com/caiyeon/paird/store"
 	"github.com/labstack/echo"
 )
 

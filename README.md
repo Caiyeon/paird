@@ -9,7 +9,7 @@ And then test the server by pinging it:
 
 
 ### Uploading static frontend files
-Upload to docs folder (replacing index.html and other files/folders) and go to https://caiyeon.github.io/lunch-with-us/
+Upload to docs folder (replacing index.html and other files/folders) and go to https://caiyeon.github.io/paird/
 
 
 

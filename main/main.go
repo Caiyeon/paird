@@ -1,7 +1,7 @@
 package main
 import (
-// "github.com/caiyeon/lunch-with-us/vault"
-"github.com/caiyeon/lunch-with-us/yelp"
+// "github.com/caiyeon/paird/vault"
+"github.com/caiyeon/paird/yelp"
 "time"
 
 

@@ -3,14 +3,14 @@ dependencies:
     # force clean cache
     - rm -rf /home/ubuntu/.go_workspace/src
     # make parent folder (since it shouldn't exist now)
-    - mkdir -p /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+    - mkdir -p /home/ubuntu/.go_workspace/src/github.com/caiyeon/paird
     # copy cloned folder into $GOPATH so vendor folder will work
-    - cd .. && mv -f lunch-with-us /home/ubuntu/.go_workspace/src/github.com/caiyeon
+    - cd .. && mv -f paird /home/ubuntu/.go_workspace/src/github.com/caiyeon
 
 test:
   override:
     - ? |
-        cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/lunch-with-us
+        cd /home/ubuntu/.go_workspace/src/github.com/caiyeon/paird
         go test -race $(go list ./... | grep -v /vendor/)
-        go build -a -o lunch-with-us -v github.com/caiyeon/lunch-with-us
-        mv lunch-with-us $CIRCLE_ARTIFACTS
+        go build -a -o paird -v github.com/caiyeon/paird
+        mv paird $CIRCLE_ARTIFACTS

@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/caiyeon/lunch-with-us/store"
-	"github.com/caiyeon/lunch-with-us/yelp"
+	"github.com/caiyeon/paird/store"
+	"github.com/caiyeon/paird/yelp"
 )
 
 const sleepDuration = 5 * time.Second
